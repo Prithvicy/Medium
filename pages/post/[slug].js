@@ -1,3 +1,4 @@
+import ArticleMain from "../../components/ArticleMain";
 import ReadersNav from "../../components/ReadersNav";
 import Recommendation from "../../components/Recommendations";
 const styles = {
@@ -7,6 +8,7 @@ const Post = () => {
   return (
     <div className={styles.content}>
       <ReadersNav />
+      <ArticleMain/>
       <Recommendation />
     </div>
   );
