@@ -1,6 +1,8 @@
 import Banner from "../components/Banner";
 import Header from "../components/Header";
 import PostCard from "../components/PostCard";
+import { MediumContext } from "../context/MediumContext";
+import { useContext } from "react";
 const styles = {
   postList:
     "flex flex-col gap-3 p-2 sm:grid-cols-2 md:gap-6 md:p-6 lg:grid-cols-3",
@@ -9,6 +11,8 @@ const styles = {
   wrapper: "mx-auto",
 };
 export default function Home() {
+  const {posts} = useContext(MediumContext);
+   console.log(posts,"xyz")
   return (
     <div className={styles.wrapper}>
       <Header />
