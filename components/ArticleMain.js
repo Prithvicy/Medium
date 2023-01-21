@@ -30,7 +30,8 @@ const styles = {
   subtitle: "font-mediumSerifItalic text-[1.4rem] text-[#292929]",
   articleText: "font-mediumSerif text-[1.4rem]  text-[#292929]",
 };
-const ArticleMain = () => {
+const ArticleMain = ({ post, author }) => {
+  console.log(post, author, "hell yahh");
   return (
     <div className={styles.wrapper}>
       <div className={styles.content}>
@@ -45,9 +46,12 @@ const ArticleMain = () => {
               />
             </div>
             <div className={styles.colum}>
-              <div>Prithvi Choudhary</div>
+              <div>{author?.data?.name}</div>
               <div className={styles.postDetails}>
-                <span>Jan 19 • 2 min read • </span>
+                <span>  {new Date(post.data?.postedOn).toLocaleString("en-us", {
+                day: "numeric",
+                month: "short",
+              })}• {post.data?.postLength} min read • </span>
 
                 <span className={styles.listenButton}>
                   <AiFillPlayCircle /> Listen
@@ -74,22 +78,19 @@ const ArticleMain = () => {
               width={1000}
             />
           </div>
-          <h1 className={styles.title}>7 cool ways to focus like pri</h1>
+          <h1 className={styles.title}>{post?.data?.title}</h1>
           <h4 className={styles.subtitle}>
-            <div>Prithvi Choudhary , June 15 , 2022</div>
-            <div>Brief: Kya he bolu yaar ....hawa hawa aiii </div>
+            <div>
+              {author?.data?.name} ,{" "}
+              {new Date(post.data?.postedOn).toLocaleString("en-us", {
+                day: "numeric",
+                month: "short",
+                year: "numeric",
+              })}
+            </div>
+            <div>{post?.data?.brief} </div>
           </h4>
-          <div className={styles.articleText}>
-            To understand smart contracts you need to first understand what a
-            blockchain is (check out one of my previous blogs on blog chain for
-            more information on it ).In short think of it as multiple blocks
-            that store data and a hash (for each block). The blocks are
-            connected so that the hash of a certain block depends on the
-            previous block. This “BlockChain “ acts as a public ledger of
-            transactions that occur on a particular network. The idiosyncratic
-            part of the blockchain is that it is decentralized hence a lot of
-            issues that arise due to middlemen are eliminated.
-          </div>
+          <div className={styles.articleText}>{post?.data?.body}</div>
         </div>
       </div>
     </div>
