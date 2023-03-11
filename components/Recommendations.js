@@ -51,7 +51,7 @@ const Recommendation = () => {
         <div className={styles.authorName}>Prithvi Choudhary</div>
         <div className={styles.authorFollowing}>1Z followers</div>
         <div className={styles.authorActions}>
-          <button className={styles.actionButton}>Follow</button>
+          <button className={styles.actionButton}>Donate Now</button>
           <button className={styles.actionButton}>
             <MdMarkEmailUnread />
           </button>

@@ -20,6 +20,7 @@ const PostModal = () => {
   const [postLength, setPostLength] = useState("");
   const [bannerImage, setBannerImage] = useState("");
   const [body, setBody] = useState("");
+  const [wallet, setWallet] = useState("");
   const addPostToFirebase = async (event) => {
     event.preventDefault();
     await addDoc(collection(db, "articles"), {
@@ -31,6 +32,7 @@ const PostModal = () => {
       postLength: Number(postLength),
       title: title,
       author: currentUser.email,
+      wallet: wallet,
     });
   };
   return (
@@ -102,6 +104,17 @@ const PostModal = () => {
             rows={12}
             value={body}
             onChange={(event) => setBody(event.target.value)}
+          />
+        </span>
+      </div>
+      <div className={styles.smallField}>
+        <span className={styles.fieldTitle}>Wallet Addresss</span>
+        <span className={styles.inputContainer}>
+          <input
+            className={styles.inputField}
+            type="text"
+            value={wallet}
+            onChange={(event) => setWallet(event.target.value)}
           />
         </span>
       </div>

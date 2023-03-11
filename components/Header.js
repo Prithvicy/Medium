@@ -48,7 +48,7 @@ const Header = () => {
             <Link href={"/?addNew=1"}>
             <div className={styles.accentedButton}>Write</div>
             </Link>
-            <div className={styles.accentedButton}>Get Unlimited Access</div>
+            <div className={styles.accentedButton}>Connect Wallet</div>
           </div>
         ) : (
           <div className={styles.bannerNav}>
