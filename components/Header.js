@@ -6,6 +6,7 @@ import Modal from "react-modal";
 import { Router, useRouter } from "next/router";
 import Link from "next/link";
 import PostModal from "./PostModal";
+import ConnectButton from "./wallet/ConnectButton";
 Modal.setAppElement("#__next");
 const customStyles = {
   content: {
@@ -55,7 +56,9 @@ const Header = () => {
             <div>Our story</div>
             <div>Mebership</div>
             <div onClick={handleUserAuth}>Sign In</div>
-            <div className={styles.accentedButton}>Get Started</div>
+            <div className={styles.accentedButton}>
+              <ConnectButton/>
+            </div>
           </div>
         )}
       </div>
