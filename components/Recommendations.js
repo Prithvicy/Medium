@@ -6,6 +6,26 @@ import TutorialImg from "../static/tutorial.jpg";
 import CPLogo from "../static/cp.png";
 import Qazi from "../static/qazi.jpg";
 import JSLogo from "../static/jsLogo.png";
+import Link from "next/link";
+import { Router, useRouter } from "next/router";
+import App from "../components/donateNow/App"
+import Modal from "react-modal";
+Modal.setAppElement("#__next");
+const customStyles = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    transform: "translate(-50% , -50%)",
+    backgroundColor: "#fff",
+    padding: 0,
+    border: "none",
+  },
+  overlay: {
+    backgroundColor: "rgba(10,11,13,.75)",
+  },
+};
 const styles = {
   wrapper: "h-screen min-w-[10rem] max-w-[30rem] flex-[1.2] p-[2rem]",
   accentedButton:
@@ -33,6 +53,8 @@ const styles = {
   articleContent: "flex-[4]",
 };
 const Recommendation = () => {
+  const router = useRouter();
+  const thisPage = `/${router.route.split('/')[1]}/${router.query.slug}`; router.route.split('/')[1]
   return (
     <div className={styles.wrapper}>
       <div className={styles.accentedButton}>Get Unlimited Access</div>
@@ -51,6 +73,9 @@ const Recommendation = () => {
         <div className={styles.authorName}>Prithvi Choudhary</div>
         <div className={styles.authorFollowing}>1Z followers</div>
         <div className={styles.authorActions}>
+          <Link href={`${thisPage}/?addNew=1`}>
+              <div className={styles.accentedButton}>Write</div>
+            </Link>
           <button className={styles.actionButton}>Donate Now</button>
           <button className={styles.actionButton}>
             <MdMarkEmailUnread />
@@ -88,6 +113,13 @@ const Recommendation = () => {
           ))}
         </div>
       </div>
+      <Modal
+        isOpen={Boolean(router.query.addNew)}
+        onRequestClose={() => router.push(`${thisPage}`)}
+        style={customStyles}
+      >
+        <App/>
+      </Modal>
     </div>
   );
 };
