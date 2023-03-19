@@ -54,14 +54,9 @@ const styles = {
 };
 const Recommendation = ({post}) => {
   const router = useRouter();
-<<<<<<< HEAD
-  const pathName = router.route.split('/')[router.route.split('/').length - 2];
-  const thisPage = `/${pathName}/${router.query.slug}`;
-=======
   const thisPage = `/${router.route.split("/")[1]}/${router.query.slug}`;
   router.route.split("/")[1];
 
->>>>>>> 1b59404 (Payment and UI fix)
   return (
     <div className={styles.wrapper}>
       <div className={styles.accentedButton}>Get Unlimited Access</div>
