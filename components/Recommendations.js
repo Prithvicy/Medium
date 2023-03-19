@@ -54,7 +54,8 @@ const styles = {
 };
 const Recommendation = () => {
   const router = useRouter();
-  const thisPage = `/${router.route.split('/')[1]}/${router.query.slug}`; router.route.split('/')[1]
+  const pathName = router.route.split('/')[router.route.split('/').length - 2];
+  const thisPage = `/${pathName}/${router.query.slug}`;
   return (
     <div className={styles.wrapper}>
       <div className={styles.accentedButton}>Get Unlimited Access</div>
@@ -74,9 +75,8 @@ const Recommendation = () => {
         <div className={styles.authorFollowing}>1Z followers</div>
         <div className={styles.authorActions}>
           <Link href={`${thisPage}/?addNew=1`}>
-              <div className={styles.accentedButton}>Write</div>
-            </Link>
-          <button className={styles.actionButton}>Donate Now</button>
+            <div className={styles.actionButton}>Donate Now</div>
+          </Link>
           <button className={styles.actionButton}>
             <MdMarkEmailUnread />
           </button>
@@ -118,7 +118,7 @@ const Recommendation = () => {
         onRequestClose={() => router.push(`${thisPage}`)}
         style={customStyles}
       >
-        <App/>
+        <App />
       </Modal>
     </div>
   );
