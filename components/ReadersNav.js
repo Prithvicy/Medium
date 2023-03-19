@@ -7,6 +7,8 @@ import { BiBookmarks } from "react-icons/bi";
 import { RiArticleLine } from "react-icons/ri";
 import { BsPencilSquare } from "react-icons/bs";
 import us from "../static/qazi.jpg";
+import { useContext } from "react";
+import { MediumContext } from "../context/MediumContext";
 const styles = {
   logoContainer: "cursor-pointer",
   wrapper:
@@ -18,6 +20,9 @@ const styles = {
   profileImageContainer: "w-[2.4rem] h-[2.4rem] rounded-full overflow-hidden ",
 };
 const ReadersNav = () => {
+  const { currentUser } = useContext(MediumContext);
+  const dummyprofileimg = "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1931&q=80"
+
   return (
     <div className={styles.wrapper}>
       <Link href={"/"}>
@@ -34,7 +39,12 @@ const ReadersNav = () => {
         <BsPencilSquare />
       </div>
       <div className={styles.profileImageContainer}>
-        <Image className={styles.profileImage} src={us} />
+        <Image
+          className={styles.profileImage}
+          src={`https://res.cloudinary.com/demo/image/fetch/${currentUser?.photoURL??dummyprofileimg}`}
+          width={100}
+          height={100}
+        />
       </div>
     </div>
   );

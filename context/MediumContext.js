@@ -42,6 +42,7 @@ const MediumProvider = ({ children }) => {
               title: doc.data().title,
               postedOn: doc.data().postedOn.toDate(),
               author: doc.data().author,
+              wallet: doc.data().wallet,
             },
           };
         })
@@ -50,24 +51,27 @@ const MediumProvider = ({ children }) => {
     getPosts();
   }, []);
   const addUserToFirebase = async (user) => {
-    await setDoc(doc(db, "user", user?.email), 
-    {
+    await setDoc(doc(db, "user", user?.email), {
       email: user.email,
       name: user.displayName,
       imageUrl: user.photoURL,
       followerCount: 0,
     });
     // console.log("bye")
-
   };
   const handleUserAuth = async () => {
     const userData = await signInWithPopup(auth, provider);
+
     const user = userData.user;
-    // console.log(user, "bollo");
+    console.log(user);
+
     setCurrentUser(user);
+    console.log(
+      `https://res.cloudinary.com/demo/image/fetch/${user?.photoURL}` , "ballz"
+    );
+
     addUserToFirebase(user);
     // console.log("hello")
-
   };
 
   return (

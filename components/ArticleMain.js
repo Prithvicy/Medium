@@ -31,7 +31,8 @@ const styles = {
   articleText: "font-mediumSerif text-[1.4rem]  text-[#292929]",
 };
 const ArticleMain = ({ post, author }) => {
-  console.log(post, author, "hell yahh");
+  console.log(post.data, "hahahahahahahah");
+  console.log(author, "hell yahh");
   return (
     <div className={styles.wrapper}>
       <div className={styles.content}>
@@ -40,7 +41,7 @@ const ArticleMain = ({ post, author }) => {
             <div className={styles.authorProfileImageContainer}>
               <Image
                 className={styles.image}
-                src={Quazi}
+                src={`https://res.cloudinary.com/demo/image/fetch/${author?.data?.imageUrl}`}
                 width={100}
                 height={100}
               />
@@ -48,10 +49,14 @@ const ArticleMain = ({ post, author }) => {
             <div className={styles.colum}>
               <div>{author?.data?.name}</div>
               <div className={styles.postDetails}>
-                <span>  {new Date(post.data?.postedOn).toLocaleString("en-us", {
-                day: "numeric",
-                month: "short",
-              })}• {post.data?.postLength} min read • </span>
+                <span>
+                  {" "}
+                  {new Date(post.data?.postedOn).toLocaleString("en-us", {
+                    day: "numeric",
+                    month: "short",
+                  })}
+                  • {post.data?.postLength} min read •{" "}
+                </span>
 
                 <span className={styles.listenButton}>
                   <AiFillPlayCircle /> Listen
@@ -73,7 +78,7 @@ const ArticleMain = ({ post, author }) => {
           <div className={styles.bannerContainer}>
             <Image
               className={styles.image}
-              src={Banner}
+              src={`https://res.cloudinary.com/demo/image/fetch/${post?.data?.bannerImage}`}
               height={1000}
               width={1000}
             />
@@ -90,6 +95,9 @@ const ArticleMain = ({ post, author }) => {
             </div>
             <div>{post?.data?.brief} </div>
           </h4>
+          <div className={styles.articleText}>
+            Agency Wallet Address : {post?.data?.wallet}
+          </div>
           <div className={styles.articleText}>{post?.data?.body}</div>
         </div>
       </div>

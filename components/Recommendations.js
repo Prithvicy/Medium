@@ -8,7 +8,7 @@ import Qazi from "../static/qazi.jpg";
 import JSLogo from "../static/jsLogo.png";
 import Link from "next/link";
 import { Router, useRouter } from "next/router";
-import App from "../components/donateNow/App"
+import App from "../components/donateNow/App";
 import Modal from "react-modal";
 Modal.setAppElement("#__next");
 const customStyles = {
@@ -52,10 +52,16 @@ const styles = {
     "flex items-center justify-between cursor-pointer my-[1rem]",
   articleContent: "flex-[4]",
 };
-const Recommendation = () => {
+const Recommendation = ({post}) => {
   const router = useRouter();
+<<<<<<< HEAD
   const pathName = router.route.split('/')[router.route.split('/').length - 2];
   const thisPage = `/${pathName}/${router.query.slug}`;
+=======
+  const thisPage = `/${router.route.split("/")[1]}/${router.query.slug}`;
+  router.route.split("/")[1];
+
+>>>>>>> 1b59404 (Payment and UI fix)
   return (
     <div className={styles.wrapper}>
       <div className={styles.accentedButton}>Get Unlimited Access</div>
